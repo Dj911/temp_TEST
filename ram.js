@@ -39,9 +39,7 @@ app.post('/webHook', function (request, response) {
 
     console.log(purchase.id);
     console.log(purchase.fiatValue);
-    console.log(purchase.fiatCurrency);
-
-    response.send('OK');
+    console.log(purchase.fiatCurrency);    
 });
 
 app.listen(process.env.PORT || 3000);
