@@ -3,12 +3,13 @@ import bodyParser from "body-parser"
 import { verify } from 'crypto'
 import stableStringify from 'fast-json-stable-stringify';
 import { readFileSync } from 'fs'
+import path from 'path'
 
 const app = express();
 
 app.use(bodyParser.json());
 
-const rampKey = readFileSync('ramp-public-test.pem').toString();
+const rampKey = readFileSync(`${path.resolve()}/ramp-public-test.pem).toString();
 
 app.post('/webHook', function (request, response) {
     console.log('HERE!!')
