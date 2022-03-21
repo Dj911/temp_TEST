@@ -25,14 +25,14 @@ app.post('/webHook', function (request, response) {
 
         if (verified) {
             console.log('SUCCESS');
-            res.status(204).send();
+            response.status(204).send();
         } else {
             console.error('ERROR: Invalid signature');
-            res.status(401).send();
+            response.status(401).send();
         }
     } else {
         console.error('ERROR: Wrong request structure');
-        res.status(401).send();
+        response.status(401).send();
     }
     console.log(event);
     const purchase = event.purchase;
