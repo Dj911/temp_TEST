@@ -1,6 +1,6 @@
 import express from "express"
 import bodyParser from "body-parser"
-import crypto from 'crypto'
+import { verify } from 'crypto'
 import stableStringify from 'fast-json-stable-stringify';
 import { readFileSync } from 'fs'
 
