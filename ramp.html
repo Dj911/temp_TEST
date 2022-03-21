@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Ramp</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <!--- Include Ramp SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/@ramp-network/ramp-instant-sdk@2.5.0/dist/ramp-instant-sdk.umd.js"
+        integrity="sha256-YOWvxewL6tQoz1eAnLtjDvIX2Vhg6uzFsRvjmcAsom0=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <button type="button" id="buy-with-ramp-button">Buy with Ramp</button>
+
+    <!--- Start Ramp on button click -->
+    <script type="application/javascript">
+        const startRamp = () => {
+
+            new rampInstantSdk.RampInstantSDK({
+                hostAppName: 'Ramp Demo',
+                hostLogoUrl: 'https://rampnetwork.github.io/assets/misc/test-logo.png',
+                // swapAmount: '1000000000000000',
+                // swapAsset: 'MATIC',
+                // userAddress: '0x091851bF96180321A840f4bB007f316468780570',
+                url: 'https://ri-widget-staging.firebaseapp.com/', // only specify the url if you want to use testnet widget versions,
+                // use variant: 'auto' for automatic mobile / desktop handling,
+                // 'hosted-auto' for automatic mobile / desktop handling in new window,
+                // 'mobile' to force mobile version
+                // 'desktop' to force desktop version (default)
+                variant: 'auto',
+                // hostApiKey: 'j4z5gn7eh7uvbdgpd7c7wgkq4msuqrgs4xq4jutv',
+                // webhookStatusUrl: 'http://localhost:3000/',
+            })
+                .on('*', async event => {
+                    console.log('EVENT: ', event)
+                    await axios.post('http://localhost:3000/', { event })
+                })
+                .show();
+        }
+
+        document.querySelector('#buy-with-ramp-button').addEventListener('click', startRamp);
+    </script>
+
+</body>
+
+</html>
