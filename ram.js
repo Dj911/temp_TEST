@@ -14,7 +14,7 @@ const rampKey = readFileSync(`${path.resolve()}/ramp-public-test.pem`).toString(
 app.post('/webHook', function (request, response) {
     console.log('HERE!!')
     const event = request.body;
-
+    try{
     if (request.body && request.header('X-Body-Signature')) {
 
         const verified = verify(
@@ -34,6 +34,9 @@ app.post('/webHook', function (request, response) {
     } else {
         console.error('ERROR: Wrong request structure');
         response.status(401).send();
+    }
+    }catch(error){
+     console.log('ERR: ',error)   
     }
     console.log(event);
     const purchase = event.purchase;
