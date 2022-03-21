@@ -6,7 +6,7 @@
   "main": "location.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node ./ramp.js"
+    "start": "nodemon ram.js"
   },
   "author": "",
   "license": "ISC",
@@ -14,6 +14,7 @@
     "@ramp-network/ramp-instant-sdk": "^3.0.0",
     "body-parser": "^1.19.2",
     "express": "^4.17.3",
+    "fast-json-stable-stringify": "^2.1.0",
     "square": "^17.2.0"
   }
 }
