@@ -17,4 +17,4 @@ app.post('/webHook', function (request, response) {
     response.send('OK');
 });
 
-app.listen(3000);
+app.listen(process.env.PORT || 3000);
