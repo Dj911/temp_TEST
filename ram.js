@@ -4,7 +4,7 @@ const app = express();
 
 app.use(bodyParser.json());
 
-app.post('/', function (request, response) {
+app.post('/webHook', function (request, response) {
     console.log('HERE!!')
     const event = request.body;
     console.log(event);
